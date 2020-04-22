@@ -1,9 +1,11 @@
 function processRawGrocery(rawGrocery){
   var groceries = rawGrocery.split(",");
-  groceries.sort();
+  console.log(groceries)
+  var trimmedGroceries = groceries.map
+  
   return groceries.map(function(grocery){
-    return grocery.toUpperCase();
-  })
+    return grocery.trim().toUpperCase();
+  }).sort();
 }
 
 
@@ -13,12 +15,15 @@ function processRawGrocery(rawGrocery){
 $(document).ready(function(){
   $("form").submit(function(e){
     e.preventDefault();
-    rawGrocery = $("textarea").val();
-    processRawGrocery.forEach(function(grocery){
-      
-    })
-      
+    clear();
+    var rawGrocery = $("textarea").val();
+    processRawGrocery(rawGrocery).forEach(function(grocery){
+      $("ul").append("<li>"+ grocery +"</li>")
     });
-
+    function clear(){
+      $("li").remove();
+    }  
   });
+
+  
 });
